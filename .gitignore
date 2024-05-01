@@ -7,7 +7,6 @@
 .yarn
 .pnp.cjs
 .pnp.loader.mjs
-yarn.lock
 
 
 # testing

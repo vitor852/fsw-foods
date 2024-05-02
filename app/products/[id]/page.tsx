@@ -5,10 +5,12 @@ import { notFound } from "next/navigation";
 import { computeProductTotalPrice, formatCurrency } from "@/app/_helpers/price";
 
 import { db } from "@/app/_lib/prisma";
+
 import ProductImage from "./_components/product-image";
 import ProductQuantity from "./_components/product-quantity";
 import { Card } from "@/app/_components/ui/card";
 import ProductList from "@/app/_components/product-list";
+import { Button } from "@/app/_components/ui/button";
 
 interface ProductPageProps {
   params: {
@@ -52,8 +54,8 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
     <div>
       <ProductImage product={product} />
 
-      <div className="relative z-auto mt-[-1.5rem] rounded-tl-3xl rounded-tr-3xl bg-white pb-5">
-        <div className="space-y-4 p-5">
+      <div className="relative z-auto mt-[-1.5rem] space-y-4 rounded-tl-3xl rounded-tr-3xl bg-white pb-5">
+        <div className="space-y-4 px-5 pt-5">
           <div>
             <div className="flex items-center gap-[0.365rem]">
               <div className="relative size-6">
@@ -141,6 +143,10 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
           <h3 className="pl-5 font-semibold">Outros produtos</h3>
 
           <ProductList products={complementaryProducts} />
+        </div>
+
+        <div className="px-5">
+          <Button className="w-full font-semibold">Adicionar à sacola</Button>
         </div>
       </div>
     </div>

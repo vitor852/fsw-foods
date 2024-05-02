@@ -54,7 +54,9 @@ const Home = async () => {
           </Button>
         </div>
 
-        <ProductList products={products} />
+        <div className="px-5">
+          <ProductList products={products} />
+        </div>
       </div>
 
       <Banner src="/promo-banner-02.png" alt="Lanches a partir de R$17,90" />

@@ -6,6 +6,7 @@ import Search from "./_components/search";
 import ProductList from "./_components/product-list";
 import { Button } from "./_components/ui/button";
 import Banner from "./_components/banner";
+import RestaurantList from "./_components/restaurant-list";
 
 import { db } from "./_lib/prisma";
 
@@ -57,6 +58,22 @@ const Home = async () => {
       </div>
 
       <Banner src="/promo-banner-02.png" alt="Lanches a partir de R$17,90" />
+
+      <div className="space-y-4 pt-6">
+        <div className="flex items-center justify-between gap-3 px-5">
+          <h3 className="font-semibold">Restaurantes recomendados</h3>
+
+          <Button
+            variant="ghost"
+            className="h-fit p-0 text-primary hover:bg-transparent"
+          >
+            Ver todos
+            <ChevronRightIcon size={16} />
+          </Button>
+        </div>
+
+        <RestaurantList />
+      </div>
     </>
   );
 };

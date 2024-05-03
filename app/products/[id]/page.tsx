@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowDownIcon, BikeIcon, TimerIcon } from "lucide-react";
+import { ArrowDownIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
@@ -7,11 +7,11 @@ import { computeProductTotalPrice, formatCurrency } from "@/app/_helpers/price";
 
 import { db } from "@/app/_lib/prisma";
 
-import ProductImage from "./_components/product-image";
-import ProductQuantity from "./_components/product-quantity";
-import { Card } from "@/app/_components/ui/card";
 import ProductList from "@/app/_components/product-list";
 import { Button } from "@/app/_components/ui/button";
+import DeliveryInfo from "@/app/_components/delivery-info";
+import ProductImage from "./_components/product-image";
+import ProductQuantity from "./_components/product-quantity";
 
 interface ProductPageProps {
   params: {
@@ -106,33 +106,10 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
           <ProductQuantity />
         </div>
 
-        <Card className="flex w-full justify-around py-3">
-          <div className="flex flex-col items-center">
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <span className="text-xs">Entrega</span>
-              <BikeIcon size={14} />
-            </div>
-
-            {Number(product.restaurant.deliveryFee) > 0 ? (
-              <p className="text-xs font-semibold">
-                {formatCurrency(Number(product.restaurant.deliveryFee))}
-              </p>
-            ) : (
-              <p className="text-xs font-semibold">Grátis</p>
-            )}
-          </div>
-
-          <div className="flex flex-col items-center">
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <span className="text-xs">Entrega</span>
-              <TimerIcon size={14} />
-            </div>
-
-            <p className="text-xs font-semibold">
-              {product.restaurant.deliveryTimeMinutes} min
-            </p>
-          </div>
-        </Card>
+        <DeliveryInfo
+          deliveryFee={Number(product.restaurant.deliveryFee)}
+          deliveryTimeMinutes={product.restaurant.deliveryTimeMinutes}
+        />
 
         <div className="space-y-3">
           <h3 className="font-semibold">Sobre</h3>

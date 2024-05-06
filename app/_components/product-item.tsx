@@ -4,24 +4,27 @@ import { ArrowDownIcon } from "lucide-react";
 import Link from "next/link";
 
 import { computeProductTotalPrice, formatCurrency } from "../_helpers/price";
+import { cn } from "../_lib/utils";
 
 interface ProductItemProps {
   product: Prisma.ProductGetPayload<{
     include: {
       restaurant: {
         select: {
+          id: true;
           name: true;
         };
       };
     };
   }>;
+  className?: string;
 }
 
-const ProductItem = ({ product }: ProductItemProps) => {
+const ProductItem = ({ product, className }: ProductItemProps) => {
   return (
-    <Link className="w-[150px] min-w-[150px]" href={`/products/${product.id}`}>
-      <div className="w-full space-y-2">
-        <div className="relative h-[150px] w-full">
+    <div className={cn("w-[150px] min-w-[150px]", className)}>
+      <Link className="space-y-2" href={`/products/${product.id}`}>
+        <div className="relative aspect-square h-[150px] w-full">
           <Image
             src={product.imageUrl}
             alt={product.name}
@@ -55,12 +58,15 @@ const ProductItem = ({ product }: ProductItemProps) => {
             )}
           </div>
 
-          <span className="truncate text-xs text-muted-foreground">
+          <Link
+            href={`/restaurants/${product.restaurant.id}`}
+            className="truncate text-xs text-muted-foreground"
+          >
             {product.restaurant.name}
-          </span>
+          </Link>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

@@ -7,6 +7,7 @@ interface ProductListProps {
     include: {
       restaurant: {
         select: {
+          id: true;
           name: true;
         };
       };

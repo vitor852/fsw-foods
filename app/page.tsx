@@ -1,4 +1,5 @@
 import { ChevronRightIcon } from "lucide-react";
+import Link from "next/link";
 
 import CategoryList from "./_components/category-list";
 import Header from "./_components/header";
@@ -20,6 +21,7 @@ const Home = async () => {
     include: {
       restaurant: {
         select: {
+          id: true,
           name: true,
         },
       },
@@ -39,7 +41,12 @@ const Home = async () => {
         <CategoryList />
       </div>
 
-      <Banner src="/promo-banner-01.png" alt="Até 30% de desconto em pizzas" />
+      <Link href="/products?gt=0&category=Pizzas">
+        <Banner
+          src="/promo-banner-01.png"
+          alt="Até 30% de desconto em pizzas"
+        />
+      </Link>
 
       <div className="space-y-4 pt-6">
         <div className="flex items-center justify-between gap-3 px-5">
@@ -48,9 +55,12 @@ const Home = async () => {
           <Button
             variant="ghost"
             className="h-fit p-0 text-primary hover:bg-transparent"
+            asChild
           >
-            Ver todos
-            <ChevronRightIcon size={16} />
+            <Link href="/products?gt=0">
+              Ver todos
+              <ChevronRightIcon size={16} />
+            </Link>
           </Button>
         </div>
 
@@ -59,18 +69,23 @@ const Home = async () => {
         </div>
       </div>
 
-      <Banner src="/promo-banner-02.png" alt="Lanches a partir de R$17,90" />
+      <Link href="/products?category=Hambúrgueres">
+        <Banner src="/promo-banner-02.png" alt="Lanches a partir de R$17,90" />
+      </Link>
 
-      <div className="space-y-4 pt-6">
+      <div className="space-y-4 py-6">
         <div className="flex items-center justify-between gap-3 px-5">
           <h3 className="font-semibold">Restaurantes recomendados</h3>
 
           <Button
             variant="ghost"
             className="h-fit p-0 text-primary hover:bg-transparent"
+            asChild
           >
-            Ver todos
-            <ChevronRightIcon size={16} />
+            <Link href="/restaurants/recommended/">
+              Ver todos
+              <ChevronRightIcon size={16} />
+            </Link>
           </Button>
         </div>
 

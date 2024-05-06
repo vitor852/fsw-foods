@@ -1,7 +1,7 @@
 import Header from "@/app/_components/header";
 import Products from "./_components/products";
 
-const RecommendedOrders = async () => {
+const OrdersPage = async () => {
   return (
     <>
       <Header />
@@ -15,4 +15,4 @@ const RecommendedOrders = async () => {
   );
 };
 
-export default RecommendedOrders;
+export default OrdersPage;

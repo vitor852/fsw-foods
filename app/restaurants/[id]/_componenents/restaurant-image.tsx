@@ -20,14 +20,15 @@ const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
       <Image
         src={restaurant.imageUrl}
         alt={restaurant.name}
-        fill
         className="object-cover"
+        sizes="100%"
+        fill
       />
 
       <Button
         className="absolute left-2 top-4 rounded-full bg-white text-foreground hover:text-white"
         size="icon"
-        onClick={() => router.back()}
+        onClick={() => router.push("/")}
       >
         <ChevronLeftIcon />
       </Button>

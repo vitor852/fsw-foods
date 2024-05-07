@@ -12,13 +12,16 @@ const Restaurants = () => {
   const search = useSearchParams();
 
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
       if (!search) return;
 
       const restaurants = await searchForRestaurants(search);
+
       setRestaurants(restaurants);
+      setIsLoading(false);
     };
 
     fetchRestaurants();
@@ -35,6 +38,8 @@ const Restaurants = () => {
           className="min-w-full max-w-full"
         />
       ))}
+
+      {!isLoading && <h3>Nenhum restaurante encontrado.</h3>}
     </div>
   );
 };

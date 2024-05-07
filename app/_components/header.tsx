@@ -1,10 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 
 import { Button } from "./ui/button";
 import { MenuIcon } from "lucide-react";
-import Link from "next/link";
+import { useState } from "react";
+import Menu from "./menu";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="flex justify-between px-5 pt-6">
       <Link href="/">
@@ -13,6 +19,7 @@ const Header = () => {
             src="/logo.png"
             alt="FSW Foods"
             className="object-cover"
+            sizes="100%"
             fill
           />
         </div>
@@ -22,9 +29,12 @@ const Header = () => {
         size="icon"
         variant="outline"
         className="border-none bg-transparent"
+        onClick={() => setIsMenuOpen(true)}
       >
         <MenuIcon />
       </Button>
+
+      <Menu isOpen={isMenuOpen} onOpenChange={setIsMenuOpen} />
     </div>
   );
 };

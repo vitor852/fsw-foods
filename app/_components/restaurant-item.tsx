@@ -23,6 +23,7 @@ const RestaurantItem = ({ restaurant, className }: RestaurantItemProps) => {
             src={restaurant.imageUrl}
             alt={restaurant.name}
             className="rounded-lg object-cover"
+            sizes="100%"
             fill
           />
 

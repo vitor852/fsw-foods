@@ -1,12 +1,15 @@
 "use client";
 
-import { Button } from "@/app/_components/ui/button";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { useState } from "react";
 
-const ProductQuantity = () => {
-  const [quantity, setQuantity] = useState(1);
+import { Button } from "@/app/_components/ui/button";
 
+interface ProductQuantityProps {
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const ProductQuantity = ({ quantity, setQuantity }: ProductQuantityProps) => {
   function handleIncrease() {
     setQuantity((state) => state + 1);
   }

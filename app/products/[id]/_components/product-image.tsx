@@ -20,8 +20,9 @@ const ProductImage = ({ product }: ProductImageProps) => {
       <Image
         src={product.imageUrl}
         alt={product.name}
-        fill
         className="object-cover"
+        sizes="100%"
+        fill
       />
 
       <Button

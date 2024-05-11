@@ -1,10 +1,11 @@
 "use client";
 
 import { ReactNode, createContext, useMemo, useState } from "react";
+import { toast } from "sonner";
 
 import { OrderStatus, Prisma, Product, Restaurant } from "@prisma/client";
+
 import { createOrder } from "../_actions/order";
-import { toast } from "sonner";
 
 export interface CartProduct
   extends Prisma.ProductGetPayload<{

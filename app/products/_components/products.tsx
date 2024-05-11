@@ -3,6 +3,8 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Prisma } from "@prisma/client";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import { searchForProducts } from "../_actions/search";
 
@@ -39,13 +41,21 @@ const Products = () => {
 
   return (
     <div className="grid grid-cols-2 gap-6">
-      {products.map((product) => (
-        <ProductItem
-          key={product.id}
-          product={product}
-          className="min-w-full"
-        />
-      ))}
+      {products.length > 0
+        ? products.map((product) => (
+            <ProductItem
+              key={product.id}
+              product={product}
+              className="min-w-full"
+            />
+          ))
+        : Array.from(Array(10)).map((item, index) => (
+            <Skeleton
+              key={index}
+              containerClassName="size-[150px] rounded-lg"
+              className="h-full w-full"
+            />
+          ))}
     </div>
   );
 };

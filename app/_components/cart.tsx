@@ -18,6 +18,7 @@ const Cart = () => {
     priceDiscount,
     priceTotal,
     restaurant,
+    submitOrder,
   } = useContext(CartContext);
 
   return (
@@ -69,7 +70,7 @@ const Cart = () => {
             </CardContent>
           </Card>
 
-          <Button className="mt-5 w-full font-semibold">
+          <Button className="mt-5 w-full font-semibold" onClick={submitOrder}>
             Finalizar pedido
           </Button>
         </div>

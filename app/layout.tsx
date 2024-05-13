@@ -9,6 +9,7 @@ import CartProvider from "./_contexts/cart";
 import Cart from "./_components/cart";
 
 import AuthProvider from "./_providers/auth";
+import ResponsivityAlert from "./_components/responsivity-alert";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         </AuthProvider>
 
         <Toaster position="top-center" />
+        <ResponsivityAlert />
       </body>
     </html>
   );
